@@ -1,4 +1,34 @@
 {{- $name := "api" -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ $name }}
+  name: {{ $name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ $name }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{ $name }}
+    spec:
+      containers:
+      - args:
+        - uwsgi
+        - --ini
+        - app.ini
+        image: lukadb/facialreconstruction:latest
+        name: {{ $name }}
+        resources: {}
+        ports:
+          - containerPort: 80
+      restartPolicy: Always
+status: {}
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,7 +36,6 @@ metadata:
     app: {{ $name }}
   name: {{ $name }}
 spec:
-  type: ClusterIP
   ports:
   - name: "api"
     port: 80
@@ -15,3 +44,4 @@ spec:
     app: {{ $name }}
 status:
   loadBalancer: {}
+
