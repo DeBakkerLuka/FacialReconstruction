@@ -17,9 +17,6 @@ spec:
         app: {{ $name }}
     spec:
       containers:
-      - args:
-        - --ini
-        - app.ini
         image: lukadb/facialreconstruction:3.0
         name: {{ $name }}
         resources: {}
