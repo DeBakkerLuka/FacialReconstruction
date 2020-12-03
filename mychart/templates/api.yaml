@@ -1,6 +1,6 @@
 {{- $name := "api" -}}
 apiVersion: v1
-kind: Workload
+kind: Deployment
 metadata:
   labels:
     app: {{ $name }}
