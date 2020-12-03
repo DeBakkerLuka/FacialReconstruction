@@ -18,7 +18,6 @@ spec:
     spec:
       containers:
       - args:
-        - uwsgi
         - --ini
         - app.ini
         image: lukadb/facialreconstruction:3.0
