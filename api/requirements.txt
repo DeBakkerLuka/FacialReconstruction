@@ -1,1 +1,3 @@
+tensorflow
 psycopg2
+keras

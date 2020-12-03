@@ -2,6 +2,9 @@ from fastapi import FastAPI, Body
 import socket
 import time
 import threading
+import tensorflow as tf
+from tensorflow import keras
+from keras.models import load_model
 
 app = FastAPI()
 
@@ -13,3 +16,8 @@ def welcome():
 def test():
     return 'Hello world, this is a test brought to you by Luka'
 
+@app.get('/getWeights')
+def weights():
+    model = load_model('facialreconstruction.h5')
+    count = len(model.layers)
+    return count
