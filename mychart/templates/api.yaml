@@ -21,7 +21,7 @@ spec:
         - uwsgi
         - --ini
         - app.ini
-        image: lukadb/facialreconstruction:latest
+        image: lukadb/facialreconstruction:3.0
         name: {{ $name }}
         resources: {}
         ports:
