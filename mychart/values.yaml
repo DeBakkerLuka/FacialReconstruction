@@ -8,4 +8,4 @@ app:
 
 repository: 'lukadb/facialreconstruction'
 loadBalancer:
-  IP: "api.192.168.10.30.xip.io"
+  IP: "192.168.10.30"
