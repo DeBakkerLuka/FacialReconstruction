@@ -1,16 +1,17 @@
-{{- $name := "ingress" -}}
-apiVersion: extensions/v1beta1
-kind: Ingress
+{{- $name := "api" -}}
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: {{ $name }}
   name: {{ $name }}
 spec:
-  rules:
-    - host: api.{{ .Values.loadBalancer.IP }}.xip.io
-      http:
-        paths:
-          - backend:
-              serviceName: api
-              servicePort: 80
-          
+  type: ClusterIP
+  ports:
+  - name: "api"
+    port: 80
+    targetPort: 80
+  selector:
+    app: {{ $name }}
+status:
+  loadBalancer: {}

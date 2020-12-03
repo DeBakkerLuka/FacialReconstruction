@@ -7,5 +7,6 @@ app:
     api: latest
 
 repository: 'lukadb/facialreconstruction'
+
 loadBalancer:
   IP: "192.168.10.30"
