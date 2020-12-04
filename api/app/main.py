@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Body
+import random
 import socket
 import time
 import threading
@@ -25,4 +26,18 @@ def weights():
 @app.get('/processRandom')
 def random():
     model = load_model('facialreconstruction.h5')
-    
+
+    randomNum = random.randint(0, 10)
+
+    image = open(f'./faces_mlops/{randomNum}.png', 'rb')
+    image_read = image.read()
+
+    image = Image.open(image)
+
+    image = np.array(image)
+    image = rgb2gray(image)
+
+    im = transform.resize(image,(100,100),mode='constant',anti_aliasing=True)
+    predict = model.predict(np.array([im]))[0]
+
+    return "chosen image " + randomNum + "has numpy values " + predict
