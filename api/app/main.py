@@ -21,3 +21,8 @@ def weights():
     model = load_model('facialreconstruction.h5')
     count = len(model.layers)
     return count
+
+@app.get('/processRandom')
+def random():
+    model = load_model('facialreconstruction.h5')
+    
