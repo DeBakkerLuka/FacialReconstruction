@@ -4,5 +4,3 @@ services:
     build: ./api
     ports:
       - 5000:80
-    expose:
-      - 80
